@@ -62,25 +62,15 @@ public class UserService : IUserService
 
         public async Task CreateUserAsync(string username, string passwordHash)
         {
-            try
+            var newUser = new User
             {
-                var newUser = new User
-                {
-                    Username = username,
-                    PasswordHash = passwordHash,
-                    CreatedAt = DateTime.UtcNow
-                };
-                _context.Users.Add(newUser);
-                await _context.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-                // Log the exception for troubleshooting
-                Console.WriteLine($"Error occurred while creating user: {ex.Message}");
-                throw; // Re-throw the exception to propagate it further if necessary
-            }
+                Username = username,
+                PasswordHash = passwordHash,
+                CreatedAt = DateTime.UtcNow
+            };
+            _context.Users.Add(newUser);
+            await _context.SaveChangesAsync();
         }
-
 
         public async Task<User> GetUserByUsernameAsync(string username)
         {

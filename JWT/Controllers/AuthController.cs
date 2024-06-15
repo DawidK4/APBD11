@@ -96,8 +96,7 @@ namespace GakkoHorizontalSlice.Controllers
         private string GenerateJwtToken(string username)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            // Generate a secure key (replace with a secure key generation mechanism)
-            var key = Encoding.ASCII.GetBytes("your_secure_key_with_at_least_256_bits_or_more"); // Example key, replace with a secure method to generate a key
+            var key = Encoding.ASCII.GetBytes("your_secure_key_with_at_least_256_bits_or_more"); 
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
@@ -115,7 +114,7 @@ namespace GakkoHorizontalSlice.Controllers
         
         private byte[] GenerateJwtKey()
         {
-            var key = new byte[16]; // 128 bits
+            var key = new byte[16]; 
             using (var rng = RandomNumberGenerator.Create())
             {
                 rng.GetBytes(key);
